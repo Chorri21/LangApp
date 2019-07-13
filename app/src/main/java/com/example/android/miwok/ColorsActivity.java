@@ -15,11 +15,11 @@ public class ColorsActivity extends AppCompatActivity {
 
         ArrayList<Word> colorWords = new ArrayList<Word>();
 
-        colorWords.add(new Word("red", "crvena"));
-        colorWords.add(new Word("blue","plava"));
-        colorWords.add(new Word("white", "bijela"));
-        colorWords.add(new Word("black", "crna"));
-        colorWords.add(new Word("green", "zelena"));
+        colorWords.add(new Word("red", "crvena", R.drawable.color_red));
+        colorWords.add(new Word("brown","smeđa", R.drawable.color_brown));
+        colorWords.add(new Word("white", "bijela", R.drawable.color_white));
+        colorWords.add(new Word("black", "crna", R.drawable.color_black));
+        colorWords.add(new Word("green", "zelena", R.drawable.color_green));
 
         WordAdapter colorAdapter = new WordAdapter(this, colorWords);
 

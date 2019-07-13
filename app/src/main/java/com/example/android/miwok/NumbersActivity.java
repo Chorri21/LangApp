@@ -16,27 +16,17 @@ public class NumbersActivity extends AppCompatActivity {
         // Create a list of words
         ArrayList<Word> numberWords = new ArrayList<Word>();
 
+        numberWords.add(new Word("one", "jedan", R.drawable.number_one));
+        numberWords.add(new Word("two", "dva", R.drawable.number_two));
+        numberWords.add(new Word("three", "tri",R.drawable.number_three));
+        numberWords.add(new Word("four", "cetiri", R.drawable.number_four));
+        numberWords.add(new Word("five", "pet", R.drawable.number_five));
+        numberWords.add(new Word("six", "šest", R.drawable.number_six));
+        numberWords.add(new Word("seven", "sedam", R.drawable.number_seven));
+        numberWords.add(new Word("eight", "osam", R.drawable.number_eight));
+        numberWords.add(new Word("nine", "devet", R.drawable.number_nine));
+        numberWords.add(new Word("ten", "deset", R.drawable.number_ten));
 
-        numberWords.add(new Word("one", "jedan"));
-        numberWords.add(new Word("two", "dva"));
-        numberWords.add(new Word("three", "tri"));
-        numberWords.add(new Word("four", "cetiri"));
-        numberWords.add(new Word("five", "pet"));
-        numberWords.add(new Word("six", "šest"));
-        numberWords.add(new Word("seven", "sedam"));
-        numberWords.add(new Word("eight", "osam"));
-        numberWords.add(new Word("nine", "devet"));
-        numberWords.add(new Word("ten", "deset"));
-        numberWords.add(new Word("eleven", "jedanaest"));
-        numberWords.add(new Word("twelve", "dvanaest"));
-        numberWords.add(new Word("thirteen", "trinaest"));
-        numberWords.add(new Word("fourteen", "četrnaest"));
-        numberWords.add(new Word("fifteen", "petnaest"));
-        numberWords.add(new Word("sixteen", "šesnaest"));
-        numberWords.add(new Word("seventeen", "sedamnaest"));
-        numberWords.add(new Word("eighteen", "osamnaest"));
-        numberWords.add(new Word("nineteen", "devetnaest"));
-        numberWords.add(new Word("twenty", "dvadeset"));
         // Create an {@link ArrayAdapter}, whose data source is a list of Strings. The
         // adapter knows how to create layouts for each item in the list, using the
         // simple_list_item_1.xml layout resource defined in the Android framework.

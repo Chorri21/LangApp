@@ -15,7 +15,7 @@ public class PhrasesActivity extends AppCompatActivity {
 
         ArrayList<Word> phrasesWords = new ArrayList<Word>();
 
-        phrasesWords.add(new Word("good afternoon", "dobar dan"));
+        phrasesWords.add(new Word("good afternoon", "dobar dan", R.drawable.family_son));
 
         WordAdapter phrasesAdapter = new WordAdapter(this, phrasesWords);
 
