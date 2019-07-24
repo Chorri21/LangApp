@@ -15,12 +15,15 @@ public class PhrasesActivity extends AppCompatActivity {
 
         ArrayList<Word> phrasesWords = new ArrayList<Word>();
 
-        phrasesWords.add(new Word("good afternoon", "dobar dan", R.drawable.family_son));
+        phrasesWords.add(new Word("good afternoon", "dobar dan", "Phrases"));
+        phrasesWords.add(new Word("good evening", "dobra večer", "Phrases"));
+        phrasesWords.add(new Word("can we order?", "možemo li naručiti?", "Phrases"));
 
         WordAdapter phrasesAdapter = new WordAdapter(this, phrasesWords);
 
         ListView listView = (ListView) findViewById(R.id.word_list);
 
         listView.setAdapter(phrasesAdapter);
+        listView.setBackgroundResource(R.color.category_phrases);
     }
 }

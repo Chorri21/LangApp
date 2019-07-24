@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class WordAdapter extends ArrayAdapter<Word> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
        //return super.getView(position, convertView, parent);
         View listItemView = convertView;
+        ViewGroup layoutView = parent;
         if(listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(
                     R.layout.list_item, parent, false);
@@ -37,7 +39,6 @@ public class WordAdapter extends ArrayAdapter<Word> {
     Word currentWord = getItem(position);
     // Default translation
     TextView defaultTextView = (TextView) listItemView.findViewById(R.id.default_text_view);
-
     // set this text on the default translation text view
     defaultTextView.setText(currentWord.getDefaultTranslation());
 
@@ -48,9 +49,33 @@ public class WordAdapter extends ArrayAdapter<Word> {
     miwokTextView.setText(currentWord.getMiwokTranslation());
 
     // Adding the image
-    ImageView miwokImage = (ImageView) listItemView.findViewById(R.id.image);
-    // Set the ImageSource
-    miwokImage.setImageResource(currentWord.getImageDrawable());
+    ImageView translationImage = (ImageView) listItemView.findViewById(R.id.image);
+    if (currentWord.hasImage()){
+        // Set the ImageSource
+        translationImage.setImageResource(currentWord.getImageResourceId());
+        translationImage.setVisibility(View.VISIBLE);
+    }
+    else {
+        translationImage.setVisibility(View.GONE);
+    }
+
+    // Attach the appropriate color for the activity needed
+    LinearLayout layout = (LinearLayout) listItemView.findViewById(R.id.text_container);
+    //layout.setBackgroundResource(R.color.category_colors);
+    if(currentWord.getActivityName() == "Numbers"){
+        layout.setBackgroundResource(R.color.category_numbers);
+    }
+    else if (currentWord.getActivityName() == "Family"){
+        layout.setBackgroundResource(R.color.category_family);
+    }
+    else if (currentWord.getActivityName() == "Colors"){
+        layout.setBackgroundResource(R.color.category_colors);
+    }
+    else {
+        layout.setBackgroundResource(R.color.category_phrases);
+    }
+
+     //layout.setBackground(R.color.category_colors);
     // Return the whole list item layout (containing 2 TextViews)
     // so that it can be shown in the ListView
     return listItemView;

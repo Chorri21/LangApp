@@ -2,33 +2,54 @@ package com.example.android.miwok;
 
 import android.graphics.drawable.Drawable;
 
+import javax.xml.transform.sax.SAXResult;
+
 public class Word {
     // We add this because our ArrayList needed two inputs to be represented (instead of the standart one ArrayList<String>..)
     private String mDefaultTranslation;
     private String mMiwokTranslation;
-    private int mImageDrawable;
+    private int mImageResourceId = NO_IMAGE_PROVIDED;
+    private static final int NO_IMAGE_PROVIDED = -1;
+    private String mActivityName;
 
-    public Word(String defaultTranslation, String miwokTranslation, int imageDrawable){
+    // A Constructor that accepts only the word translation
+    public Word(String defaultTranslation, String miwokTranslation) {
         mDefaultTranslation = defaultTranslation;
         mMiwokTranslation = miwokTranslation;
-        mImageDrawable = imageDrawable;
+    }
+    public Word(String defaultTranslation, String miwokTranslation, String activityName) {
+        mDefaultTranslation = defaultTranslation;
+        mMiwokTranslation = miwokTranslation;
+        mActivityName = activityName;
+    }
+    public Word(String defaultTranslation, String miwokTranslation, String activityName, int imageResourceId){
+        mDefaultTranslation = defaultTranslation;
+        mMiwokTranslation = miwokTranslation;
+        mActivityName = activityName;
+        mImageResourceId = imageResourceId;
     }
     /*
-    public Image(){
-        mImageName = imageName;
 
     }
     */
     public String getDefaultTranslation(){
-
         return mDefaultTranslation;
     }
-    public String getMiwokTranslation()
-    {
-        return mMiwokTranslation;
 
+    public String getMiwokTranslation(){
+        return mMiwokTranslation;
     }
-    public int getImageDrawable(){
-        return mImageDrawable;
+
+    public int getImageResourceId(){
+        return mImageResourceId;
     }
+
+    public boolean hasImage(){
+        return mImageResourceId != NO_IMAGE_PROVIDED;
+    }
+
+    public String getActivityName(){
+        return mActivityName;
+    }
+
 }
