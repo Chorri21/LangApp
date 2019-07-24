@@ -15,11 +15,11 @@ public class PhrasesActivity extends AppCompatActivity {
 
         ArrayList<Word> phrasesWords = new ArrayList<Word>();
 
-        phrasesWords.add(new Word("good afternoon", "dobar dan", "Phrases"));
-        phrasesWords.add(new Word("good evening", "dobra večer", "Phrases"));
-        phrasesWords.add(new Word("can we order?", "možemo li naručiti?", "Phrases"));
+        phrasesWords.add(new Word("good afternoon", "dobar dan"));
+        phrasesWords.add(new Word("good evening", "dobra večer"));
+        phrasesWords.add(new Word("can we order?", "možemo li naručiti?"));
 
-        WordAdapter phrasesAdapter = new WordAdapter(this, phrasesWords);
+        WordAdapter phrasesAdapter = new WordAdapter(this, phrasesWords, R.color.category_phrases);
 
         ListView listView = (ListView) findViewById(R.id.word_list);
 

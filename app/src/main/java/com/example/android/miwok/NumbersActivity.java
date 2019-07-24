@@ -17,23 +17,23 @@ public class NumbersActivity extends AppCompatActivity {
         // Create a list of words
         ArrayList<Word> numberWords = new ArrayList<Word>();
 
-        numberWords.add(new Word("one", "jedan", "Numbers", R.drawable.number_one));
-        numberWords.add(new Word("two", "dva", "Numbers",R.drawable.number_two));
-        numberWords.add(new Word("three", "tri","Numbers",R.drawable.number_three));
-        numberWords.add(new Word("four", "cetiri", "Numbers",R.drawable.number_four));
-        numberWords.add(new Word("five", "pet", "Numbers",R.drawable.number_five));
-        numberWords.add(new Word("six", "šest", "Numbers",R.drawable.number_six));
-        numberWords.add(new Word("seven", "sedam", "Numbers",R.drawable.number_seven));
-        numberWords.add(new Word("eight", "osam", "Numbers",R.drawable.number_eight));
-        numberWords.add(new Word("nine", "devet", "Numbers",R.drawable.number_nine));
-        numberWords.add(new Word("ten", "deset", "Numbers",R.drawable.number_ten));
+        numberWords.add(new Word("one", "jedan", R.drawable.number_one));
+        numberWords.add(new Word("two", "dva", R.drawable.number_two));
+        numberWords.add(new Word("three", "tri",R.drawable.number_three));
+        numberWords.add(new Word("four", "cetiri",R.drawable.number_four));
+        numberWords.add(new Word("five", "pet",R.drawable.number_five));
+        numberWords.add(new Word("six", "šest",R.drawable.number_six));
+        numberWords.add(new Word("seven", "sedam",R.drawable.number_seven));
+        numberWords.add(new Word("eight", "osam",R.drawable.number_eight));
+        numberWords.add(new Word("nine", "devet",R.drawable.number_nine));
+        numberWords.add(new Word("ten", "deset",R.drawable.number_ten));
 
         // Create an {@link ArrayAdapter}, whose data source is a list of Strings. The
         // adapter knows how to create layouts for each item in the list, using the
         // simple_list_item_1.xml layout resource defined in the Android framework.
         // This list item layout contains a single {@link TextView}, which the adapter will set to
         // display a single word.
-        WordAdapter numberAdapter = new WordAdapter(this, numberWords);
+        WordAdapter numberAdapter = new WordAdapter(this, numberWords, R.color.category_numbers);
 
         // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
         // There should be a {@link ListView} with the view ID called list, which is declared in the

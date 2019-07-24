@@ -10,22 +10,16 @@ public class Word {
     private String mMiwokTranslation;
     private int mImageResourceId = NO_IMAGE_PROVIDED;
     private static final int NO_IMAGE_PROVIDED = -1;
-    private String mActivityName;
 
     // A Constructor that accepts only the word translation
     public Word(String defaultTranslation, String miwokTranslation) {
         mDefaultTranslation = defaultTranslation;
         mMiwokTranslation = miwokTranslation;
     }
-    public Word(String defaultTranslation, String miwokTranslation, String activityName) {
+
+    public Word(String defaultTranslation, String miwokTranslation, int imageResourceId){
         mDefaultTranslation = defaultTranslation;
         mMiwokTranslation = miwokTranslation;
-        mActivityName = activityName;
-    }
-    public Word(String defaultTranslation, String miwokTranslation, String activityName, int imageResourceId){
-        mDefaultTranslation = defaultTranslation;
-        mMiwokTranslation = miwokTranslation;
-        mActivityName = activityName;
         mImageResourceId = imageResourceId;
     }
     /*
@@ -48,8 +42,6 @@ public class Word {
         return mImageResourceId != NO_IMAGE_PROVIDED;
     }
 
-    public String getActivityName(){
-        return mActivityName;
-    }
+
 
 }
