@@ -50,4 +50,16 @@
         android:text="@string/category_phrases"
         android:onClick="openPhrases"/>
 
+    <Button
+        android:id="@+id/play_button"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Play"/>
+
+    <Button
+        android:id="@+id/stop_button"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Stop"/>
+
 </LinearLayout>
