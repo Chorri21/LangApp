@@ -9,6 +9,8 @@ public class Word {
     private String mDefaultTranslation;
     private String mMiwokTranslation;
     private int mImageResourceId = NO_IMAGE_PROVIDED;
+    private int mSoundName;
+
     private static final int NO_IMAGE_PROVIDED = -1;
 
     // A Constructor that accepts only the word translation
@@ -22,10 +24,15 @@ public class Word {
         mMiwokTranslation = miwokTranslation;
         mImageResourceId = imageResourceId;
     }
-    /*
 
+    // Implement sound on clicking the ListView 03.04.2020
+    public Word(String defaultTranslation, String miwokTranslation, int imageResourceId, int soundName){
+        mDefaultTranslation = defaultTranslation;
+        mMiwokTranslation = miwokTranslation;
+        mImageResourceId = imageResourceId;
+        mSoundName = soundName;
     }
-    */
+
     public String getDefaultTranslation(){
         return mDefaultTranslation;
     }

@@ -34,8 +34,4 @@ public class ColorsActivity extends AppCompatActivity {
         //layout.setBackgroundColor(getResources().getColor(R.color.category_colors));
         //layout.setBackgroundColor(Color.parseColor("#8800A0"));
     }
-
-
-
-
 }
