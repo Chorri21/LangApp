@@ -14,11 +14,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class WordAdapter extends ArrayAdapter<Word> {
     private int mColorResourceId;
-    private MediaPlayer mediaPlayer;
 
     // My Code
     public WordAdapter(Activity context, ArrayList<Word> words, int colorResourceId) {
@@ -43,8 +43,10 @@ public class WordAdapter extends ArrayAdapter<Word> {
 
     // Get the {@link Word} object located at this position in the list
     Word currentWord = getItem(position);
+
     // Default translation
     TextView defaultTextView = (TextView) listItemView.findViewById(R.id.default_text_view);
+
     // set this text on the default translation text view
     defaultTextView.setText(currentWord.getDefaultTranslation());
 
@@ -65,18 +67,19 @@ public class WordAdapter extends ArrayAdapter<Word> {
         translationImage.setVisibility(View.GONE);
     }
 
-    // Set the theme color for the list item
+        // Set the theme color for the list item
     View textContainer = listItemView.findViewById(R.id.text_container);
+
     // Find the color that the resource ID maps to
     int color = ContextCompat.getColor(getContext(), mColorResourceId);
+
     // Set the background color of the text container View
     textContainer.setBackgroundColor(color);
 
 
-     //layout.setBackground(R.color.category_colors);
+    // layout.setBackground(R.color.category_colors);
     // Return the whole list item layout (containing 2 TextViews)
     // so that it can be shown in the ListView
     return listItemView;
+    }
 }
-}
-

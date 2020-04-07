@@ -26,14 +26,14 @@ public class NumbersActivity extends AppCompatActivity {
 
         numberWords.add(new Word("one", "jedan", R.drawable.number_one, R.raw.number_one)); // has number sound implemented
         numberWords.add(new Word("two", "dva", R.drawable.number_two, R.raw.number_two));
-        numberWords.add(new Word("three", "tri",R.drawable.number_three));
-        numberWords.add(new Word("four", "cetiri",R.drawable.number_four));
-        numberWords.add(new Word("five", "pet",R.drawable.number_five));
-        numberWords.add(new Word("six", "šest",R.drawable.number_six));
-        numberWords.add(new Word("seven", "sedam",R.drawable.number_seven));
-        numberWords.add(new Word("eight", "osam",R.drawable.number_eight));
-        numberWords.add(new Word("nine", "devet",R.drawable.number_nine));
-        numberWords.add(new Word("ten", "deset",R.drawable.number_ten));
+        numberWords.add(new Word("three", "tri",R.drawable.number_three, R.raw.number_three));
+        numberWords.add(new Word("four", "cetiri",R.drawable.number_four, R.raw.number_four));
+        numberWords.add(new Word("five", "pet",R.drawable.number_five, R.raw.number_five));
+        numberWords.add(new Word("six", "šest",R.drawable.number_six, R.raw.number_six));
+        numberWords.add(new Word("seven", "sedam",R.drawable.number_seven, R.raw.number_seven));
+        numberWords.add(new Word("eight", "osam",R.drawable.number_eight, R.raw.number_eight));
+        numberWords.add(new Word("nine", "devet",R.drawable.number_nine, R.raw.number_nine));
+        numberWords.add(new Word("ten", "deset",R.drawable.number_ten, R.raw.number_ten));
 
         // Create an {@link ArrayAdapter}, whose data source is a list of Strings. The
         // adapter knows how to create layouts for each item in the list, using the
@@ -58,7 +58,8 @@ public class NumbersActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                mMediaPlayer = MediaPlayer.create(NumbersActivity.this, R.raw.number_one);
+                Word words = numberWords.get(position);
+                mMediaPlayer = MediaPlayer.create(NumbersActivity.this, words.getSoundResourceId());
                 mMediaPlayer.start();
             }
         });
