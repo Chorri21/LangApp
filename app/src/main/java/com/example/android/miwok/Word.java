@@ -25,6 +25,7 @@ public class Word {
         mImageResourceId = imageResourceId;
     }
 
+
     // Implement sound on clicking the ListView 03.04.2020
     public Word(String defaultTranslation, String miwokTranslation, int imageResourceId, int soundResourceId){
         mDefaultTranslation = defaultTranslation;
@@ -44,7 +45,7 @@ public class Word {
     public int getImageResourceId(){
         return mImageResourceId;
     }
-
+    // Get sound resource ID
     public int getSoundResourceId() {
         return  mSoundResourceId;
     }
@@ -53,4 +54,19 @@ public class Word {
         return mImageResourceId != NO_IMAGE_PROVIDED;
     }
 
+    /**
+     * For Debugging purpose
+     * Returns the string representation of the {@link Word} object.
+     */
+    /*
+    @Override
+    public String toString() {
+        return "Word{" +
+                "mDefaultTranslation='" + mDefaultTranslation + '\'' +
+                ", mMiwokTranslation='" + mMiwokTranslation + '\'' +
+                ", mImageResourceId=" + mImageResourceId +
+                ", mSoundResourceId=" + mSoundResourceId +
+                '}';
+    }
+    */
 }

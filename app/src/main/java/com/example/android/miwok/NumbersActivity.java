@@ -3,6 +3,7 @@ package com.example.android.miwok;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
@@ -15,6 +16,7 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 
 public class NumbersActivity extends AppCompatActivity {
+    /** Handles playback of all the sound files */
     private MediaPlayer mMediaPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,10 +60,27 @@ public class NumbersActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Get the {@link Word} object at the given position the user clicked on
                 Word words = numberWords.get(position);
+
+                // Log.v("NumbersActivity", "Current word: " + words);
+
+                // Create and setup the {@link MediaPlayer} for the audio resource associated
+                // with the current word
                 mMediaPlayer = MediaPlayer.create(NumbersActivity.this, words.getSoundResourceId());
                 mMediaPlayer.start();
+
+                // Set an event listener.
+                mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        Toast toast=Toast.makeText(getApplicationContext(),"Playback finished!",Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+                });
             }
         });
+
+
     }
 }
