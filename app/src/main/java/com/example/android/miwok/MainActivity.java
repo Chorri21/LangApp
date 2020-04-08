@@ -26,9 +26,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    // Have a global private MediaPlayer
-    private MediaPlayer mediaPlayer;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,30 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Set the content of the activity to use the activity_main.xml layout file
         setContentView(R.layout.activity_main);
-
-        /*
-        // Media player
-        Button playButton = (Button) findViewById(R.id.play_button);
-        Button stopButton = (Button) findViewById(R.id.stop_button);
-
-        mediaPlayer = MediaPlayer.create(this, R.raw.ring);
-        //mediaPlayer.start();
-        playButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mediaPlayer.start();
-            }
-        });
-
-        stopButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mediaPlayer.pause();
-            }
-        });
-        */
-
-        }
+     }
 
 
     public void openNumbersList(View view) {

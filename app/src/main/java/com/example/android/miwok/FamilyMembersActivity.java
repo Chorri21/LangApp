@@ -21,6 +21,13 @@ public class FamilyMembersActivity extends AppCompatActivity {
             releaseMediaPlayer();
         }
     };
+    // When the user leaves the activity, release the MediaPlayer.
+    // Check more on Activity Lifecycle
+    @Override
+    protected void onStop() {
+        super.onStop();
+        releaseMediaPlayer();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

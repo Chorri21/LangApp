@@ -30,6 +30,13 @@ public class NumbersActivity extends AppCompatActivity {
             releaseMediaPlayer();
         }
     };
+    // When the user leaves the activity, release the MediaPlayer.
+    // Check more on Activity Lifecycle
+    @Override
+    protected void onStop() {
+        super.onStop();
+        releaseMediaPlayer();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +50,7 @@ public class NumbersActivity extends AppCompatActivity {
         numberWords.add(new Word("two", "dva", R.drawable.number_two, R.raw.number_two));
         numberWords.add(new Word("three", "tri",R.drawable.number_three, R.raw.number_three));
         numberWords.add(new Word("four", "cetiri",R.drawable.number_four, R.raw.number_four));
-        numberWords.add(new Word("five", "pet",R.drawable.number_five, R.raw.number_five));
+        numberWords.add(new Word("five", "pet",R.drawable.number_five, R.raw.ring));
         numberWords.add(new Word("six", "šest",R.drawable.number_six, R.raw.number_six));
         numberWords.add(new Word("seven", "sedam",R.drawable.number_seven, R.raw.number_seven));
         numberWords.add(new Word("eight", "osam",R.drawable.number_eight, R.raw.number_eight));
@@ -80,7 +87,8 @@ public class NumbersActivity extends AppCompatActivity {
 
                 // Get the {@link Word} object at the given position the user clicked on
                 Word words = numberWords.get(position);
-                // Log.v("NumbersActivity", "Current word: " + words);
+                //LogCat logging example
+                //Log.v("NumbersActivity", "Current word: " + words);
 
                 // Create and setup the {@link MediaPlayer} for the audio resource associated
                 // with the current word
@@ -90,6 +98,7 @@ public class NumbersActivity extends AppCompatActivity {
                 // Setup a listener on the media player, so that we can stop and release the
                 // media player once the sound has finished playing.
                 mMediaPlayer.setOnCompletionListener(mOnCompletionListener);
+
             }
         });
 
