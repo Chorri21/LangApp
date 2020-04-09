@@ -1,5 +1,6 @@
 package com.example.android.miwok;
 
+import android.media.AudioManager;
 import android.media.MediaActionSound;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -19,6 +20,24 @@ import java.util.ArrayList;
 public class NumbersActivity extends AppCompatActivity {
     /** Handles playback of all the sound files */
     private MediaPlayer mMediaPlayer;
+    private AudioManager mAudioManager;
+
+    AudioManager.OnAudioFocusChangeListener afChangeListener = new AudioManager.OnAudioFocusChangeListener() {
+        @Override
+        public void onAudioFocusChange(int focusChange) {
+            if (focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT || focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK){
+                mMediaPlayer.pause();
+                // mMediaPlayer.seekTo(0);
+            }
+            else if (focusChange == AudioManager.AUDIOFOCUS_GAIN){
+                mMediaPlayer.start();
+            }
+            else if(focusChange == AudioManager.AUDIOFOCUS_LOSS){
+                mMediaPlayer.stop();
+                releaseMediaPlayer();
+            }
+        }
+    };
 
     /**
      * This listener gets triggered when the {@link MediaPlayer} has completed
@@ -42,6 +61,7 @@ public class NumbersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word_list);
+        mAudioManager = (AudioManager) getSystemService(NumbersActivity.AUDIO_SERVICE);
 
         // Create a list of words
         final ArrayList<Word> numberWords = new ArrayList<Word>();
@@ -77,35 +97,38 @@ public class NumbersActivity extends AppCompatActivity {
         // This is for the whole layout background
         listView.setBackgroundResource(R.color.tan_background);
 
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // Release the media player if it currently exists because we are about to
                 // play a different sound file.
                 releaseMediaPlayer();
-
                 // Get the {@link Word} object at the given position the user clicked on
                 Word words = numberWords.get(position);
+
+                int result =  mAudioManager.requestAudioFocus(afChangeListener,
+                        AudioManager.STREAM_MUSIC,
+                        AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
+
+                if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+                    // Create and setup the {@link MediaPlayer} for the audio resource associated
+                    // with the current word
+                    mMediaPlayer = MediaPlayer.create(NumbersActivity.this, words.getSoundResourceId());
+                    mMediaPlayer.start();
+                    // Setup a listener on the media player, so that we can stop and release the
+                    // media player once the sound has finished playing.
+                    mMediaPlayer.setOnCompletionListener(mOnCompletionListener);
+                }
                 //LogCat logging example
                 //Log.v("NumbersActivity", "Current word: " + words);
 
-                // Create and setup the {@link MediaPlayer} for the audio resource associated
-                // with the current word
-                mMediaPlayer = MediaPlayer.create(NumbersActivity.this, words.getSoundResourceId());
-                mMediaPlayer.start();
-
-                // Setup a listener on the media player, so that we can stop and release the
-                // media player once the sound has finished playing.
-                mMediaPlayer.setOnCompletionListener(mOnCompletionListener);
-
             }
         });
-
     }
 
     /**
      * Clean up the media player by releasing its resources.
+     * Here we also abandon the AudioFocus Listener
      */
     private void releaseMediaPlayer() {
         // If the media player is not null, then it may be currently playing a sound.
@@ -118,6 +141,12 @@ public class NumbersActivity extends AppCompatActivity {
             // setting the media player to null is an easy way to tell that the media player
             // is not configured to play an audio file at the moment.
             mMediaPlayer = null;
+            // We have to abandon the Audio Focus Listener after we do not need it
+            mAudioManager.abandonAudioFocus(afChangeListener);
         }
     }
+
 }
+
+
+
