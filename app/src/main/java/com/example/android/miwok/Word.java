@@ -5,7 +5,7 @@ import android.graphics.drawable.Drawable;
 import javax.xml.transform.sax.SAXResult;
 
 public class Word {
-    // We add this because our ArrayList needed two inputs to be represented (instead of the standart one ArrayList<String>..)
+    // We add this because our ArrayList needed two inputs to be represented (instead of the standard one ArrayList<String>..)
     private String mDefaultTranslation;
     private String mMiwokTranslation;
     private int mImageResourceId = NO_IMAGE_PROVIDED;
