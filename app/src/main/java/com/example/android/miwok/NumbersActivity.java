@@ -1,9 +1,13 @@
 package com.example.android.miwok;
 
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.media.AudioManager;
 import android.media.MediaActionSound;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import org.w3c.dom.Text;
 
@@ -21,6 +26,8 @@ public class NumbersActivity extends AppCompatActivity {
     /** Handles playback of all the sound files */
     private MediaPlayer mMediaPlayer;
     private AudioManager mAudioManager;
+
+
 
     AudioManager.OnAudioFocusChangeListener afChangeListener = new AudioManager.OnAudioFocusChangeListener() {
         @Override
@@ -57,11 +64,13 @@ public class NumbersActivity extends AppCompatActivity {
         releaseMediaPlayer();
     }
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word_list);
         mAudioManager = (AudioManager) getSystemService(NumbersActivity.AUDIO_SERVICE);
+
 
         // Create a list of words
         final ArrayList<Word> numberWords = new ArrayList<Word>();
