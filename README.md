@@ -1,2 +1,0 @@
-# LangApp
-Learning Android 
