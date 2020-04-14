@@ -13,19 +13,9 @@ public class PhrasesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.word_list);
-
-        final ArrayList<Word> phrasesWords = new ArrayList<Word>();
-
-        phrasesWords.add(new Word("good afternoon", "dobar dan"));
-        phrasesWords.add(new Word("good evening", "dobra večer"));
-        phrasesWords.add(new Word("can we order?", "možemo li naručiti?"));
-
-        WordAdapter phrasesAdapter = new WordAdapter(this, phrasesWords, R.color.category_phrases);
-
-        ListView listView = (ListView) findViewById(R.id.word_list);
-
-        listView.setAdapter(phrasesAdapter);
-        listView.setBackgroundResource(R.color.category_phrases);
+        setContentView(R.layout.activity_category);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, new PhrasesFragment())
+                .commit();
     }
 }
