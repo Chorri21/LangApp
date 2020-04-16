@@ -37,4 +37,8 @@
 
     <!-- Text color -->
     <color name="text_color">#FFFFFF</color>
+
+    <!-- Active Tab Text color -->
+    <color name="active_tab_color">#FFFFFF</color>
+
 </resources>
